@@ -15,10 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "categoria")
-/**
- *
- * @author roberto.alferesusam
- */
+
 public class Categoria implements Serializable {
 
     @Id
