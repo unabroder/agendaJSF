@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        Hello Personas
+        <h:form>
+            <p:outputLabel>Nombre</p:outputLabel>
+            <p:inputText value="#{personaController.persona.nombre}"></p:inputText>
+            <p:outputLabel>Apellido</p:outputLabel>
+            <p:inputText value="#{personaController.persona.apellido}"></p:inputText>
+            <p:outputLabel>Email</p:outputLabel>
+            <p:inputText value="#{personaController.persona.email}"></p:inputText>
+            <p:outputLabel>Telefono</p:outputLabel>
+            <p:inputText value="#{personaController.persona.telefono}"></p:inputText>
+            <p:commandButton value="Guardar" actionListener="#{personaController.insertar()}"></p:commandButton>
+            <p:commandButton value="Mostar Datos" actionListener="#{personaController.listar()}" update=":tablapersona"></p:commandButton>
+        </h:form>
+        <p:dataTable id="tablapersona" value="#{personaController.lista}" var="ver">
+            <p:column headerText="#">
+                <p:outputLabel value="#{ver.idpersona}"></p:outputLabel>
+            </p:column>
+            <p:column headerText="Nombre">
+                <p:outputLabel value="#{ver.nombre}"></p:outputLabel>
+            </p:column>
+            <p:column headerText="Apellido">
+                <p:outputLabel value="#{ver.apellido}"></p:outputLabel>
+            </p:column>
+            <p:column headerText="Email">
+                <p:outputLabel value="#{ver.email}"></p:outputLabel>
+            </p:column>
+            <p:column headerText="Telefono">
+                <p:outputLabel value="#{ver.telefono}"></p:outputLabel>
+            </p:column>
+             <p:column headerText="Modificar">
+                 <p:commandLink ></p:commandLink>
+            </p:column>
+             <p:column headerText="Eliminar">
+                <p:outputLabel value="#{ver.telefono}"></p:outputLabel>
+            </p:column>
+        </p:dataTable>
+    </h:body>
+</html>
+

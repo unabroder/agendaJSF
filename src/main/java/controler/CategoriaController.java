@@ -11,15 +11,16 @@ import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.enterprise.context.SessionScoped;
+
 import javax.inject.Named;
-import javax.enterprise.context.RequestScoped;
 
 /**
  *
  * @author roberto.alferesusam
  */
 @Named(value = "categoriaController")
-@RequestScoped
+@SessionScoped
 public class CategoriaController implements Serializable {
 
     @EJB
@@ -58,6 +59,30 @@ public class CategoriaController implements Serializable {
 
     public void listar() {
         try {
+            lista = categoriaEJB.findAll();
+        } catch (Exception e) {
+        }
+    }
+    
+    public void leerId(Categoria cat){
+        try {
+            categoria = cat;
+        } catch (Exception e) {
+        }
+    }
+    
+     public void modificar(){
+        try {
+            categoriaEJB.edit(categoria);
+            lista = categoriaEJB.findAll();
+        } catch (Exception e) {
+        }
+    }
+     
+      public void eliminar(Categoria cat){
+        try {
+            this.categoria = cat;
+            categoriaEJB.remove(categoria);
             lista = categoriaEJB.findAll();
         } catch (Exception e) {
         }
