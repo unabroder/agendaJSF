@@ -5,23 +5,24 @@
  */
 package ejb;
 
-import entity.Persona;
+import entity.Notas;
 import java.util.List;
 import javax.ejb.Local;
-@Local
+
 /**
  *
  * @author roberto.alferesusam
  */
-public interface PersonaFacadeLocal {
+@Local
+public interface NotasFacadeLocal {
 
-    void create(Persona persona);
+    public void create(Notas nota);
 
-    void edit(Persona persona);
+    public void edit(Notas nota);
 
-    void remove(Persona persona);
+    public void remove(Notas nota);
 
-    Persona find(Object id);
+    Notas find(Object id);
 
-    List<Persona> findAll();
+    List<Notas> findAll();
 }

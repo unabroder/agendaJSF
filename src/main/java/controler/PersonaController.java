@@ -15,11 +15,11 @@ import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 @Named(value = "personaController")
-@RequestScoped
+@SessionScoped
 
 public class PersonaController implements Serializable {
 
@@ -47,6 +47,7 @@ public class PersonaController implements Serializable {
     @PostConstruct
     public void init() {
         persona = new Persona();
+        lista = personaEJB.findAll();
     }
 
     public void insertar() {
@@ -70,14 +71,15 @@ public class PersonaController implements Serializable {
         }
     }
 
-    public void Modificar() {
+    public void modificar() {
         try {
             personaEJB.edit(persona);
+            lista = personaEJB.findAll();
         } catch (Exception e) {
         }
     }
 
-    public void Eliminar(Persona per) {
+    public void eliminar(Persona per) {
         try {
             this.persona = per;
             personaEJB.remove(persona);

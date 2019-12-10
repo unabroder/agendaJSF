@@ -5,27 +5,27 @@
  */
 package ejb;
 
-import entity.Categoria;
+import entity.Notas;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-@Stateless
 /**
  *
  * @author roberto.alferesusam
  */
-public class CategoriaFacade extends AbstractFacade<Categoria> implements CategoriaFacadeLocal {
+@Stateless
+public class NotasFacade extends AbstractFacade<Notas> implements NotasFacadeLocal {
 
     @PersistenceContext(unitName = "conexionPU")
-    private EntityManager em;
+    protected EntityManager em;
 
     @Override
-    protected EntityManager getEntityManager() {
+    public EntityManager getEntityManager() {
         return em;
     }
 
-    public CategoriaFacade() {
-        super(Categoria.class);
+    public NotasFacade() {
+        super(Notas.class);
     }
 }

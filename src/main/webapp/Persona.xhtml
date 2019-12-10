@@ -36,13 +36,34 @@
             <p:column headerText="Telefono">
                 <p:outputLabel value="#{ver.telefono}"></p:outputLabel>
             </p:column>
-             <p:column headerText="Modificar">
-                 <p:commandLink ></p:commandLink>
+            <p:column headerText="Modificar">
+                <p:commandLink value="Modificar" actionListener="#{personaController.leerId(ver)}" update=":dialogo" oncomplete="PF('W').show();"></p:commandLink>
             </p:column>
-             <p:column headerText="Eliminar">
-                <p:outputLabel value="#{ver.telefono}"></p:outputLabel>
+            <p:column headerText="Eliminar">
+                <p:commandLink value="Eliminar" actionListener="#{personaController.eliminar(ver)}" update="tablapersona"></p:commandLink>
             </p:column>
         </p:dataTable>
+        <h:form>
+            <p:selectOneListbox id="selec" value="#{personaController.lista}" var="sel">
+                
+            </p:selectOneListbox>
+        </h:form>
+        <p:dialog id="dialogo" widgetVar="W"  header="Datos" >
+            <h:form>
+            <p:outputLabel value="ID"></p:outputLabel>
+            <p:inputText value="#{personaController.persona.idpersona}"></p:inputText>
+            <p:outputLabel value="NOMBRE"></p:outputLabel>
+            <p:inputText value="#{personaController.persona.nombre}"></p:inputText>
+            <p:outputLabel value="APELLIDO"></p:outputLabel>
+            <p:inputText value="#{personaController.persona.apellido}"></p:inputText>
+            <p:outputLabel value="EMAIL"></p:outputLabel>
+            <p:inputText value="#{personaController.persona.email}"></p:inputText>
+            <p:outputLabel value="TELEFONO"></p:outputLabel>
+            <p:inputText value="#{personaController.persona.telefono}"></p:inputText>
+            <p:commandButton value="Modificar" actionListener="#{personaController.modificar()}"></p:commandButton>
+            <p:commandButton value="Cancelar" oncomplete="PF('W').hide();" update=":tablapersona"></p:commandButton>
+            </h:form>
+        </p:dialog>
     </h:body>
 </html>
 
